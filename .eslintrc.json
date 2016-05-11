@@ -1,0 +1,18 @@
+{
+  "extends": "rackt",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2,
+    "block-scoped-var": 0,
+    "padded-blocks": 0,
+    "no-console": 0,
+    "comma-dangle": [2, "never"]
+  },
+  "plugins": ["react"]
+}
