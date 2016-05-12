@@ -11,8 +11,7 @@ const logger = createLogger()
 let createStoreWithMiddleware
 
 if (__DEV__) {
-  // createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore)
-  createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+  createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore)
 } else {
   createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 }
