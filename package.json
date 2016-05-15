@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "mocha --opts test/mocha.opts test/**/*.test.js",
-    "mytest": "mocha --opts mytest/mocha.opts mytest/*.test.js"
+    "test": "mocha --opts test/mocha.opts test/**/*.spec.js",
+    "mytest": "mocha --opts mytest/mocha.opts mytest/*.spec.js"
   },
   "dependencies": {
     "react": "^0.14.8",

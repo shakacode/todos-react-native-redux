@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import TodoList from './todo-list'
+import TodoList from './TodoList'
 
 describe('TodoList', () => {
   it('should render two to-dos', () => {
