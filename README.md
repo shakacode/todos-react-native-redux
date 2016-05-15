@@ -2,7 +2,7 @@
 
 ## Background
 This project was created for a React Native talk held on May 11, 2016.
-Presentation can be seen [here](https://docs.google.com/presentation/d/125QDRaPTVyNU8-X0gtfnzNseNPfS-evtFsRkbscSpi0/edit?usp=sharing).
+Presentation can be seen [here](http://www.slideshare.net/DanJ3/redux-with-react-native).
 
 ## Getting Started
 
@@ -12,8 +12,8 @@ Presentation can be seen [here](https://docs.google.com/presentation/d/125QDRaPT
 3. react-native-cli is recommended to be installed globally by running `npm -g install react-native-cli`.
 
 ### Installation
-*  git clone https://github.com/urbanvikingr/TodosRedux.git
-*  cd TodosRedux
+*  git clone https://github.com/urbanvikingr/todos-react-native-redux.git
+*  cd todos-react-native-redux
 *  run `npm install`
 
 ### To run the iOS app
