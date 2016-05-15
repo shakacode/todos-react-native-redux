@@ -14,8 +14,8 @@ export default class TodoList extends Component {
   }
   render() {
     const { todos } = this.props
-    const orderedTodos = this.getOrderedTodos(todos)
-    const dataSource = getDataSource(orderedTodos)
+    const sortedTodos = this.getSortedTodos(todos)
+    const dataSource = getDataSource(sortedTodos)
     return (
       <ListView
         automaticallyAdjustContentInsets={false}
@@ -51,13 +51,13 @@ export default class TodoList extends Component {
   onPressRow(rowData: {}) {
     this.props.toggleTodo(rowData.id)
   }
-  // Here I am making an ordered JSON structure from the simple Todos array. I am doing this
+  // Here I am making an sorted JSON structure from the simple Todos array. I am doing this
   // because I want to keep the Reducers as close as possible to the original Redux todos
   // example for a React Native / Redux presentation.
   // You should create your data structure using the Reducers and avoid this function.
-  getOrderedTodos(todos: []) {
+  getSortedTodos(todos: []) {
     const numberOfTodos = todos.length
-    let orderedTodos = []
+    let sortedTodos = []
     let activeTodos = []
     let completedTodos = []
 
@@ -69,9 +69,9 @@ export default class TodoList extends Component {
         activeTodos = this.cumulateTodos(activeTodos, todo)
       }
     }
-    orderedTodos = this.cumulateOrderedTodos(orderedTodos, 0, 'Active', activeTodos)
-    orderedTodos = this.cumulateOrderedTodos(orderedTodos, 1, 'Completed', completedTodos)
-    return orderedTodos
+    sortedTodos = this.cumulateSortedTodos(sortedTodos, 0, 'Active', activeTodos)
+    sortedTodos = this.cumulateSortedTodos(sortedTodos, 1, 'Completed', completedTodos)
+    return sortedTodos
   }
   cumulateTodos(todos: [], todo: {}) {
     return (todos[todo.id]) ? this.editTodo(todos, todo) : this.addTodo(todos, todo)
@@ -85,11 +85,11 @@ export default class TodoList extends Component {
       return result
     }, {}))
   }
-  cumulateOrderedTodos(orderedTodos: [], id: number, name: string, todos: []) {
+  cumulateSortedTodos(sortedTodos: [], id: number, name: string, todos: []) {
     if (todos.length > 0) {
-      return [ ...orderedTodos, { id, name, rows: todos } ]
+      return [ ...sortedTodos, { id, name, rows: todos } ]
     } else {
-      return orderedTodos
+      return sortedTodos
     }
   }
 }

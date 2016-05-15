@@ -6,7 +6,7 @@ const origJS = require.extensions['.js']
 require.extensions['.js'] = function (module, filename) {
   let output
   if (filename.indexOf('node_modules/react-native/Libraries/react-native/react-native.js') >= 0) {
-    filename = path.resolve('mytest/react-native.js')
+    filename = path.resolve('test/react-native.js')
   }
   if (filename.indexOf('node_modules/') >= 0) {
     return (origJS || require.extensions['.js'])(module, filename)
