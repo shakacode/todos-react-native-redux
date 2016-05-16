@@ -1,5 +1,4 @@
 import React from 'react-native'
-
 const { Component, Text, View } = React
 
 export default class TodoList extends Component {

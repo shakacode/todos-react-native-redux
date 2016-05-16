@@ -1,28 +1,11 @@
-import { ListView } from 'react-native'
-
-const getSectionData = (dataBlob, sectionID) => {
-  return dataBlob[sectionID]
-}
-
-const getRowData = (dataBlob, sectionID, rowID) => {
-  return dataBlob[`${sectionID}-${rowID}`]
-}
-
-const dataSource = new ListView.DataSource({
-  getSectionData,
-  getRowData,
-  sectionHeaderHasChanged: (s1, s2) => s1 !== s2,
-  rowHasChanged: (row1, row2) => row1 !== row2
-})
-
-export const getDataSource = source => {
-  const numberOfSections = source.length
+export const getDataSource = data => {
+  const numberOfSections = data.length
   let dataBlob = {}
   let sectionIDs = []
   let rowIDs = []
 
   for (let i = 0; i < numberOfSections; i++) {
-    let section = source[i]
+    let section = data[i]
     sectionIDs.push(section.id)
     dataBlob[section.id] = section
 
@@ -37,5 +20,5 @@ export const getDataSource = source => {
       dataBlob[`${section.id}-${row.id}`] = row
     }
   }
-  return dataSource.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs)
+  return { dataBlob, sectionIDs, rowIDs }
 }
