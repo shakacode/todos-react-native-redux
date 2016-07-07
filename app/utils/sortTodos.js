@@ -2,44 +2,38 @@
 // because I want to keep the Reducers as close as possible to the original Redux todos
 // example for a React Native / Redux presentation.
 // You should create your own data structure in the Reducers and avoid this function.
-const addTodo = (todos: [], todo: {}) => {
-  return [ ...todos, todo ]
-}
+const addTodo = (todos: [], todo: {}) => [...todos, todo];
 
-const editTodo = (todos: [], todo: {}) => {
-  return Object.assign({}, todos, todos.reduce((result, t) => {
-    if (t.id === todo.id) { result[t] = todo }
-    return result
+const editTodo = (todos: [], todo: {}) => (
+  Object.assign({}, todos, todos.reduce((result, t) => {
+    if (t.id === todo.id) { result[t] = todo; }
+    return result;
   }, {}))
-}
+);
 
-const cumulateTodos = (todos: [], todo: {}) => {
-  return (todos[todo.id]) ? editTodo(todos, todo) : addTodo(todos, todo)
-}
+const cumulateTodos = (todos: [], todo: {}) => (
+  (todos[todo.id]) ? editTodo(todos, todo) : addTodo(todos, todo)
+);
 
-const cumulateSortedTodos = (sortedTodos: [], id: number, name: string, todos: []) => {
-  if (todos.length > 0) {
-    return [ ...sortedTodos, { id, name, rows: todos } ]
-  } else {
-    return sortedTodos
-  }
-}
+const cumulateSortedTodos = (sortedTodos: [], id: number, name: string, todos: []) => (
+  todos.length > 0 ? [...sortedTodos, { id, name, rows: todos }] : sortedTodos
+);
 
 export const sortTodos = (todos: []) => {
-  const numberOfTodos = todos.length
-  let sortedTodos = []
-  let activeTodos = []
-  let completedTodos = []
+  const numberOfTodos = todos.length;
+  let sortedTodos = [];
+  let activeTodos = [];
+  let completedTodos = [];
 
   for (let i = 0; i < numberOfTodos; i++) {
-    let todo = todos[i]
+    const todo = todos[i];
     if (todo.completed) {
-      completedTodos = cumulateTodos(completedTodos, todo)
+      completedTodos = cumulateTodos(completedTodos, todo);
     } else {
-      activeTodos = cumulateTodos(activeTodos, todo)
+      activeTodos = cumulateTodos(activeTodos, todo);
     }
   }
-  sortedTodos = cumulateSortedTodos(sortedTodos, 0, 'Active', activeTodos)
-  sortedTodos = cumulateSortedTodos(sortedTodos, 1, 'Completed', completedTodos)
-  return sortedTodos
-}
+  sortedTodos = cumulateSortedTodos(sortedTodos, 0, 'Active', activeTodos);
+  sortedTodos = cumulateSortedTodos(sortedTodos, 1, 'Completed', completedTodos);
+  return sortedTodos;
+};
