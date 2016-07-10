@@ -13,12 +13,14 @@
     "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.4",
     "chai": "^3.5.0",
     "enzyme": "2.3.0",
-    "eslint": "^2.9.0",
-    "eslint-config-rackt": "^1.1.1",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint": "2.9.0",
+    "eslint-config-shakacode": "5.0.0",
+    "eslint-plugin-import": "1.8.1",
+    "eslint-plugin-react": "5.1.1",
+    "eslint-plugin-react-native": "^1.1.0",
+    "eslint-plugin-jsx-a11y": "1.2.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "0.14.8",
     "react-dom": "0.14.8",
